@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
   s.source_files = 'dependencies/include/*.h'
   s.public_header_files = 'dependencies/include/*.h'
-  s.preserve_paths = 'libopus.a'
+  s.preserve_paths = 'dependencies/lib/libopus.a'
   s.xcconfig     = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/Opus-iOS/dependencies/lib"' }
   s.requires_arc = false
 end
