@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "Opus-iOS"
+  s.name         = "Opus-ios"
   s.version      = "1.0"
   s.summary      = "iOS build scripts for the Opus Codec."
   s.homepage     = "https://chatsecure.org"
