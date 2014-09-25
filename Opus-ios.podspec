@@ -7,8 +7,8 @@ Pod::Spec.new do |s|
   s.author       = { "Chris Ballinger" => "chris@chatsecure.org" }
   s.source       = { :git => "https://github.com/OnBeep/Opus-iOS.git", :tag => "1.1" }
   s.platform     = :ios, '7.0'
-  s.source_files = 'dependencies/include/*.h'
-  s.public_header_files = 'dependencies/include/*.h'
+  s.source_files = 'dependencies/include/opus/*.h'
+  s.public_header_files = 'dependencies/include/opus/*.h'
   s.preserve_paths = 'dependencies/lib/libopus.a'
   s.library = 'opus'
   s.xcconfig = { 'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/Opus-ios/dependencies/lib"' }  
