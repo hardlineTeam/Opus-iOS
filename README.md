@@ -1,16 +1,23 @@
-# Opus-iOS
+### Building the Library
 
-> Opus is a totally open, royalty-free, highly versatile audio codec. Opus is unmatched for interactive speech and music transmission over the Internet, but is also intended for storage and streaming applications. It is standardized by the Internet Engineering Task Force (IETF) as RFC 6716 which incorporated technology from Skype's SILK codec and Xiph.Org's CELT codec.
+#### Specify libopus and iOS SDK Version
+1. `$ git clone git@github.com:OnBeep/Opus-iOS.git`
+2. `$ vim build-libopus.sh` Ensure the VERSION, SDKVERSION and MINIOSVERSION variables are set to the desired environment.
 
-iOS build scripts for the [Opus Codec](http://www.opus-codec.org). I am also working on an Objective-C wrapper called [OpusKit](https://github.com/chrisballinger/opuskit).
-
-### Usage
-
+#### Build the Static Library
 1. `$ bash build-libopus.sh`
-2. Drag `dependencies/` into your Xcode project.
-3. Enjoy!
 
+You should see the static library and header files in `dependencies/`.
 
-### License
+### Updating the CocoaPod
+If the static library has changed, you'll want to push those changes to the team via CocoaPods.
 
-MIT
+1. `$ vim Opus-ios.podspec` Bump `s.version` and the `s.source` tag
+2. Commit and push the changes to Develop and Master branches. 
+3. Create and push a tag to the bumped version in step 1.
+
+### FAQ
+
+Q. I successfully updated the CocoaPod but my team gets an error when they `$ pod install`. 
+
+Try blowing away `Pods/` with `$ rm -rf Pods/` before running `$ pod install`.
