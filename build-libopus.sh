@@ -23,7 +23,7 @@
 #  Choose your libopus version and your currently-installed iOS SDK version:
 #
 VERSION="1.1"
-SDKVERSION="8.0"
+SDKVERSION="8.1"
 MINIOSVERSION="7.0"
 
 ###########################################################################
