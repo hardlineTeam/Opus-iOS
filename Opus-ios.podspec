@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "Opus-ios"
-  s.version      = "1.2"
+  s.version      = "1.3"
   s.summary      = "iOS build scripts for the Opus Codec."
   s.homepage     = "https://chatsecure.org"
   s.license      = 'MIT'
   s.author       = { "Chris Ballinger" => "chris@chatsecure.org" }
-  s.source       = { :git => "https://github.com/OnBeep/Opus-iOS.git", :tag => "1.2" }
+  s.source       = { :git => "https://github.com/OnBeep/Opus-iOS.git", :tag => "1.3" }
   s.platform     = :ios, '7.0'
   s.source_files = 'dependencies/include/opus/*.h'
   s.public_header_files = 'dependencies/include/opus/*.h'
