@@ -1,0 +1,10 @@
+--- silk/decode_core.c	2015-12-30 11:16:21.000000000 -0800
++++ silk/decode_core-new.c	2016-04-07 16:08:30.000000000 -0700
+@@ -172,6 +172,7 @@
+         if( signalType == TYPE_VOICED ) {
+             /* Set up pointer */
+             pred_lag_ptr = &sLTP_Q15[ sLTP_buf_idx - lag + LTP_ORDER / 2 ];
++#pragma clang loop vectorize(disable) interleave(disable)
+             for( i = 0; i < psDec->subfr_length; i++ ) {
+                 /* Unrolled loop */
+                 /* Avoids introducing a bias because silk_SMLAWB() always rounds to -inf */

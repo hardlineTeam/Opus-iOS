@@ -87,6 +87,9 @@ echo "Using opus-${VERSION}.tar.gz"
 tar zxf opus-${VERSION}.tar.gz -C $SRCDIR
 cd "${SRCDIR}/opus-${VERSION}"
 
+# patch for Xcode 7.3 llvm loop vectorization issue
+patch silk/decode_core.c -p1 < ${REPOROOT}/decode_core.patch
+
 set +e # don't bail out of bash script if ccache doesn't exist
 CCACHE=`which ccache`
 if [ $? == "0" ]; then
