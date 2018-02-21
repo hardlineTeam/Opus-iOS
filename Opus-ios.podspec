@@ -5,8 +5,8 @@ Pod::Spec.new do |s|
   s.homepage     = "https://chatsecure.org"
   s.license      = 'MIT'
   s.author       = { "Chris Ballinger" => "chris@chatsecure.org" }
+  s.platforms    = { :ios => '8.0', :watchos => '2.0' }
   s.source       = { :git => "https://github.com/OnBeep/Opus-iOS.git", :tag => "1.7" }
-  s.platform     = :ios, '8.0'
   s.source_files = 'dependencies/include/opus/*.h'
   s.public_header_files = 'dependencies/include/opus/*.h'
   s.preserve_paths = 'dependencies/lib/libopus.a'
