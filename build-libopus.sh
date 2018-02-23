@@ -1,6 +1,6 @@
 #!/bin/bash
 #  Builds libopus for all three current iPhone targets: iPhoneSimulator-i386,
-#  iPhoneOS-armv6, iPhoneOS-armv7.
+#  iPhoneOS-armv6, iPhoneOS-armv7, plus the current Apple Watch target: armv7k.
 #
 #  Copyright 2012 Mike Tigas <mike@tig.as>
 #
@@ -48,7 +48,7 @@ fi
 
 # No need to change this since xcode build will only compile in the
 # necessary bits from the libraries we create
-ARCHS="i386 x86_64 armv7 armv7s arm64"
+ARCHS="i386 x86_64 armv7 armv7s arm64 armv7k"
 
 DEVELOPER=`xcode-select -print-path`
 #DEVELOPER="/Applications/Xcode.app/Contents/Developer"
