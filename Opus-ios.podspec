@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
   s.public_header_files = 'dependencies/include/opus/*.h'
   s.preserve_paths = 'dependencies/lib/libopus.a'
   s.library = 'opus'
+  s.xcconfig = { 'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/Opus-ios/dependencies/lib"' }  
   s.requires_arc = false
 end
 
