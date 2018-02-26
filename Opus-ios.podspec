@@ -8,5 +8,9 @@ Pod::Spec.new do |spec|
   spec.platforms    = { :ios => '9.0', :watchos => '2.0' }
   spec.requires_arc = true
   spec.license = { :type => "MIT", :file => "LICENSE" }
-  spec.vendored_frameworks = "opus.framework"
+  spec.source_files = 'dependencies/include/opus/*.h'
+  spec.public_header_files = 'dependencies/include/opus/*.h'
+  spec.preserve_paths = 'dependencies/lib/libopus.a'
+  spec.library = 'opus'
+  spec.xcconfig = { 'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/Opus-ios/dependencies/lib"' } 
 end
