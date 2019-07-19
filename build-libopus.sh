@@ -22,10 +22,9 @@
 ###########################################################################
 #  Choose your libopus version and your currently-installed iOS SDK version:
 #
-
-VERSION="1.1.2"
-SDKVERSION="9.3"
-MINIOSVERSION="8.0"
+VERSION="1.3.1"
+SDKVERSION="12.2"
+MINIOSVERSION="10.0"
 
 ###########################################################################
 #
@@ -87,9 +86,6 @@ echo "Using opus-${VERSION}.tar.gz"
 tar zxf opus-${VERSION}.tar.gz -C $SRCDIR
 cd "${SRCDIR}/opus-${VERSION}"
 
-# patch for Xcode 7.3 llvm loop vectorization issue
-patch silk/decode_core.c -p1 < ${REPOROOT}/decode_core.patch
-
 set +e # don't bail out of bash script if ccache doesn't exist
 CCACHE=`which ccache`
 if [ $? == "0" ]; then
@@ -108,7 +104,7 @@ do
     if [ "${ARCH}" == "i386" ] || [ "${ARCH}" == "x86_64" ]; then
         PLATFORM="iPhoneSimulator"
         EXTRA_CFLAGS="-arch ${ARCH}"
-        EXTRA_CONFIG=""
+        EXTRA_CONFIG="--host=x86_64-apple-darwin"
     else
         PLATFORM="iPhoneOS"
         EXTRA_CFLAGS="-arch ${ARCH}"

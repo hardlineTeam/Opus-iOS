@@ -4,20 +4,59 @@
 1. `$ git clone git@github.com:OnBeep/Opus-iOS.git`
 2. `$ vim build-libopus.sh` Ensure the VERSION, SDKVERSION and MINIOSVERSION variables are set to the desired environment.
 
-#### Build the Static Library
-1. `$ bash build-libopus.sh`
+iOS build scripts for the [Opus Codec](http://www.opus-codec.org).
 
-You should see the static library and header files in `dependencies/`.
+## Usage
 
-## Updating the CocoaPod
-If the static library has changed, you'll want to push those changes to the team via CocoaPods.
+1. (Objective-C) [Build the static library](#building-the-static-library)
+2. (Optionally for Swift) [Build the framework](#building-the-framework)
+3. (Optionally) Use the [CocoaPod spec](/opus-ios.podspec)
 
-1. `$ vim Opus-ios.podspec` Bump `s.version` and the `s.source` tag
-2. Commit and push the changes to Develop and Master branches. 
-3. Create and push a tag to the bumped version in step 1.
+## Building the Static Library
 
-## FAQ
+#### Step 1
 
-Q. I successfully updated the CocoaPod but my team gets an error when they `$ pod install`. 
+Download the [latest stable tar file](http://opus-codec.org/downloads/) and place it into the `build/src` directory
 
-Try blowing away `Pods/` with `$ rm -rf Pods/` before running `$ pod install`.
+Note: If it's a new version of opus or if the iOS SDKs changed since the last time you built it, update that version at the top of the `build-libopus.sh` file.
+
+#### Step 2
+
+From the command line, run:
+
+```bash
+$ ./build-libopus.sh
+```
+
+That will take the tar file and build the static library in a directory called `dependencies`
+
+#### Step 3
+
+Follow the steps above for building the framework from the static library
+
+
+## Building the Framework
+
+#### Step 1
+
+Open the `opus/opus.xcodeproj` file, select `UniversalTarget` with a `Generic iOS Device`
+
+#### Step 2
+
+Build the framework by pressing Run; this will overwrite the framework in the repo root.
+
+Note: this runs a custom build script within Build Phases that will build a universal framework with both simulator and device slices
+
+If we have issues with submitting to the app store w/ the extra simulator slices, view this: http://arsenkin.com/ios-universal-framework.html / http://stackoverflow.com/a/30866648/308315
+
+#### Step 3
+
+Ensure the framework includes slices for both simulator and device architectures (x86_64 i386 armv7 armv7s arm64)
+
+```bash
+$ lipo -info opus.framework/opus
+```
+
+## License
+
+MIT
