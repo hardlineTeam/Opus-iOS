@@ -23,7 +23,7 @@
 #  Choose your libopus version and your currently-installed iOS SDK version:
 #
 VERSION="1.3.1"
-SDKVERSION="12.2"
+SDKVERSION="13.4"
 MINIOSVERSION="10.0"
 
 ###########################################################################
@@ -35,11 +35,11 @@ MINIOSVERSION="10.0"
 # by default, we won't build for debugging purposes
 if [ "${DEBUG}" == "true" ]; then
     echo "Compiling for debugging ..."
-    OPT_CFLAGS="-O0 -fno-inline -g"
+    OPT_CFLAGS="-O0 -fno-inline -fembed-bitcode-marker -g"
     OPT_LDFLAGS=""
     OPT_CONFIG_ARGS="--enable-assertions --disable-asm"
 else
-    OPT_CFLAGS="-Ofast -flto -g"
+    OPT_CFLAGS="-Ofast -flto -fembed-bitcode -g"
     OPT_LDFLAGS="-flto"
     OPT_CONFIG_ARGS=""
 fi
